@@ -1,12 +1,4 @@
 // Assignment code here
-var generatePassword = ["password length", "special characters", "numeric characters", "lower case", "upper case"];
-  
-
-
-// Do you want special characters?
-// Do you want lower case or upper case?
-// How long do you want the password to be? between 8 and 128 characters
-
 
 
 var generatePassword = function() {
@@ -23,8 +15,8 @@ var upperCaseEnabled = false;
   var numericCharactersAnswer = getNumericCharacters()
   var lowerCaseAnswer = getLowerCase()
   var upperCaseAnswer = getUpperCase() 
-  if (passwordLengthAnswer && specialCharactersAnswer && numericCharactersAnswer && lowerCaseAnswer && upperCaseAnswer){
-    var password = writePassword()
+  if (passwordLengthAnswer && (specialCharactersAnswer || numericCharactersAnswer || lowerCaseAnswer || upperCaseAnswer)){
+    var password = writePassword(passwordLengthAnswer, specialCharactersAnswer, numericCharactersAnswer, lowerCaseAnswer, upperCaseAnswer)
     // use jquery to place password in html input
   };
 
@@ -44,15 +36,44 @@ var upperCaseEnabled = false;
     if (upperCase);
     console.log(upperCase); */
  
-  }; 
-  var writePassword = function() {
+};
+
+  var writePassword = function(passwordLengthAnswer, specialCharactersAnswer, numericCharactersAnswer, lowerCaseAnswer, upperCaseAnswer) {
  // should pass answers into this function
  // and create password given by answers by user and return the function
+    lowerCase = 'abcdefghijklmnopqrstuvwxyz';
+    upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    numericCharacters = '0123456789';
+    specialCharacters = '!@#$%^&*()-_+=[]{}\|:;"\'<>?,.'
+
+    var password = ''
+    let length = passwordLengthAnswer
+    for (let i = 0; i < length; i++) {
+      if (specialCharactersAnswer) {
+        password += specialCharacters[Math.floor(Math.random() * 28)]  
+        i++;      
+      }
+      if (numericCharactersAnswer) {
+        password += numericCharacters[Math.floor(Math.random() * 9)]
+        i++;
+      }
+      if (lowerCaseAnswer) {
+        password += lowerCase[Math.floor(Math.random() * 25)];
+        i++;
+      }
+      if (upperCaseAnswer) {
+        password += upperCase[Math.floor(Math.random() * 25)];
+        i++;
+      }
+    }
+    console.log(ps)
+    console.log(ps.length)
+    return password
   }
 
   var getPasswordLength = function() {
     var passwordLengthAnswer = prompt("How many characters would you like your password to contain?");
-    if ( passwordLengthAnswer > 8 && passwordLengthAnswer < 128) {
+    if ( passwordLengthAnswer >= 8 && passwordLengthAnswer <= 128) {
       console.log(passwordLengthAnswer);
        return passwordLengthAnswer;
     } 
@@ -88,7 +109,6 @@ var upperCaseEnabled = false;
     if (upperCase);
     console.log(upperCase);
     return upperCase;
-
   };
 
 
