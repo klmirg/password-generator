@@ -14,7 +14,7 @@ var generatePassword = function() {
   var numericCharactersAnswer = getNumericCharacters()
   var lowerCaseAnswer = getLowerCase()
   var upperCaseAnswer = getUpperCase() 
-  if (passwordLengthAnswer && specialCharactersAnswer && numericCharactersAnswer && lowerCaseAnswer && upperCaseAnswer){
+  if (passwordLengthAnswer && (specialCharactersAnswer || numericCharactersAnswer || lowerCaseAnswer || upperCaseAnswer)){
      var password = writePassword(passwordLengthAnswer, specialCharactersAnswer, numericCharactersAnswer, lowerCaseAnswer, upperCaseAnswer)
   }
 };
