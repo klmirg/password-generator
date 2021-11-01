@@ -9,6 +9,7 @@ To generate a random password based on what you choose you want in it. (special 
 * JavaScript
 
 ## Website
+https://klmirg.github.io/password-generator/
 
 ## Image of Website
 ![](assets/images/passwordGeneratorScreenshot.png)
