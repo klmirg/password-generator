@@ -10,6 +10,9 @@ To generate a random password based on what you choose you want in it. (special 
 
 ## Website
 
+## Image of Website
+![](assets/images/passwordGeneratorScreenshot.png)
+
 
 ## Contribution
 Ronya Gettis
