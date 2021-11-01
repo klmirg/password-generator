@@ -1,15 +1,14 @@
-// Assignment code here
-
-
+// This provides the default answers if nothing is chosen.
 var generatePassword = function() {
-var password = "";
-var passwordLength = "";
-var specialCharactersEnabled = false;
-var numericCharactersEnabled = false;
-var lowerCaseEnabled = false;
-var upperCaseEnabled = false;
-
-
+  var password = "";
+  var passwordLength = "";
+  var specialCharactersEnabled = false;
+  var numericCharactersEnabled = false;
+  var lowerCaseEnabled = false;
+  var upperCaseEnabled = false;
+  
+  
+  // Setting up the variables here.
   var passwordLengthAnswer = getPasswordLength()
   var specialCharactersAnswer = getSpecialCharacters()
   var numericCharactersAnswer = getNumericCharacters()
@@ -17,13 +16,10 @@ var upperCaseEnabled = false;
   var upperCaseAnswer = getUpperCase() 
   if (passwordLengthAnswer && specialCharactersAnswer && numericCharactersAnswer && lowerCaseAnswer && upperCaseAnswer){
      var password = writePassword(passwordLengthAnswer, specialCharactersAnswer, numericCharactersAnswer, lowerCaseAnswer, upperCaseAnswer)
-    // use jquery to place password in html input
   }
 };
-
+// This is the function that creates the password.
   var writePassword = function(passwordLengthAnswer, specialCharactersAnswer, numericCharactersAnswer, lowerCaseAnswer, upperCaseAnswer) {
- // should pass answers into this function
- // and create password given by answers by user and return the function
     lowerCase = 'abcdefghijklmnopqrstuvwxyz';
     upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     numericCharacters = '0123456789';
@@ -52,6 +48,7 @@ var upperCaseEnabled = false;
     alert(password);
   };
 
+  // This function prompts the user for how long they want their password to be, between 8 and 128 characters.
   var getPasswordLength = function() {
     var passwordLengthAnswer = prompt("How many characters would you like your password to contain?");
     if ( passwordLengthAnswer >= 8 && passwordLengthAnswer <= 128) {
@@ -64,6 +61,7 @@ var upperCaseEnabled = false;
     }
   };
 
+  // This function prompts the user to decide if they want special characters in their password.
   var getSpecialCharacters = function() {
     var specialCharacters = window.confirm("Click OK to confirm including special characters.");
     if (specialCharacters);
@@ -71,6 +69,7 @@ var upperCaseEnabled = false;
       return specialCharacters;
   };
 
+  // This function prompts the user to decide if they want any numeric characters in their password.
   var getNumericCharacters = function() {
     var numericCharacters = window.confirm("Click OK to confirm including numeric characters.");
     if (numericCharacters);
@@ -78,6 +77,7 @@ var upperCaseEnabled = false;
     return numericCharacters;
   };
 
+  // This function prompts the user if they want any lower case letters in their password.
   var getLowerCase = function() {
     var lowerCase = window.confirm("Click OK to confirm including lower case letters.");
     if (lowerCase);
@@ -85,6 +85,7 @@ var upperCaseEnabled = false;
     return lowerCase;
   };
 
+  // This function prompts the user if they want to use any upper case letters in their password.
   var getUpperCase = function() {
     var upperCase = window.confirm("Click OK to confirm including upper case letters.");
     if (upperCase);
@@ -93,10 +94,10 @@ var upperCaseEnabled = false;
   };
 
 
-// Get references to the #generate element
+
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -104,10 +105,10 @@ function writePassword() {
   passwordText.value = password;
 
 }
-// Add event listener to generate button
+
 generateBtn.addEventListener("click", writePassword);
 
 
 
-
+// this is calling the generatePassword function.
 generatePassword();
