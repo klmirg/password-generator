@@ -15,27 +15,10 @@ var upperCaseEnabled = false;
   var numericCharactersAnswer = getNumericCharacters()
   var lowerCaseAnswer = getLowerCase()
   var upperCaseAnswer = getUpperCase() 
-  if (passwordLengthAnswer && (specialCharactersAnswer || numericCharactersAnswer || lowerCaseAnswer || upperCaseAnswer)){
-    var password = writePassword(passwordLengthAnswer, specialCharactersAnswer, numericCharactersAnswer, lowerCaseAnswer, upperCaseAnswer)
+  if (passwordLengthAnswer && specialCharactersAnswer && numericCharactersAnswer && lowerCaseAnswer && upperCaseAnswer){
+     var password = writePassword(passwordLengthAnswer, specialCharactersAnswer, numericCharactersAnswer, lowerCaseAnswer, upperCaseAnswer)
     // use jquery to place password in html input
-  };
-
-  /*var specialCharacters = window.confirm("Click OK to confirm including special characters.");
-    if (specialCharacters);
-    console.log(specialCharacters);
-
-  var numericCharacters = window.confirm("Click OK to confirm including numeric characters.");
-    if (numericCharacters);
-    console.log(numericCharacters);
-
-  var lowerCase = window.confirm("Click OK to confirm including lower case letters.");
-    if (lowerCase);
-    console.log(lowerCase);
-
-  var upperCase = window.confirm("Click OK to confirm including upper case letters.");
-    if (upperCase);
-    console.log(upperCase); */
- 
+  }
 };
 
   var writePassword = function(passwordLengthAnswer, specialCharactersAnswer, numericCharactersAnswer, lowerCaseAnswer, upperCaseAnswer) {
@@ -44,32 +27,30 @@ var upperCaseEnabled = false;
     lowerCase = 'abcdefghijklmnopqrstuvwxyz';
     upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     numericCharacters = '0123456789';
-    specialCharacters = '!@#$%^&*()-_+=[]{}\|:;"\'<>?,.'
+    specialCharacters = '!@#$%^&*()-_+=[]{}\\|:;"\'<>?,.';
 
     var password = ''
     let length = passwordLengthAnswer
     for (let i = 0; i < length; i++) {
       if (specialCharactersAnswer) {
         password += specialCharacters[Math.floor(Math.random() * 28)]  
-        i++;      
+        i++;
       }
       if (numericCharactersAnswer) {
         password += numericCharacters[Math.floor(Math.random() * 9)]
         i++;
       }
       if (lowerCaseAnswer) {
-        password += lowerCase[Math.floor(Math.random() * 25)];
+        password += lowerCase[Math.floor(Math.random() * 25)]
         i++;
       }
       if (upperCaseAnswer) {
-        password += upperCase[Math.floor(Math.random() * 25)];
+        password += upperCase[Math.floor(Math.random() * 25)]
         i++;
       }
     }
-    console.log(ps)
-    console.log(ps.length)
-    return password
-  }
+    alert(password);
+  };
 
   var getPasswordLength = function() {
     var passwordLengthAnswer = prompt("How many characters would you like your password to contain?");
@@ -125,7 +106,6 @@ function writePassword() {
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
 
 
 
